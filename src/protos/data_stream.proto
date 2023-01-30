@@ -1,0 +1,31 @@
+// [START declaration]
+syntax = "proto3";
+// Namespace
+package dataStream;
+// [END declaration]
+
+// [START service]
+// Service definition.
+service Simulation {
+  rpc WorkVector (stream Vector) returns (stream Vector) {}
+  rpc WorkMatrix (stream Matrix) returns (stream Matrix) {}
+}
+// [END service]
+
+// [START messages]
+// Define Vector
+message Vector {
+  int32 id = 1;
+  int32 vector_size = 2;
+  bytes vector_bytes = 3;
+}
+
+// Define Matrix
+message Matrix {
+  int32 id = 1;
+  int32 matrix_rows = 2;
+  int32 matrix_cols = 3;
+  bytes matrix_bytes = 4;
+}
+
+// [END messages]
